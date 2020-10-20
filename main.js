@@ -161,3 +161,65 @@ const inventory = [
     sold: 8,
   },
 ];
+
+const toSell = inventory.reduce((acc, currentValue) => {
+  return acc + (currentValue.originalStock - currentValue.sold);
+}, 0);
+
+console.log('tvs to sell: ', toSell);
+
+const myDiv = document.getElementById('toSell');
+const newSpan = document.createElement('span');
+newSpan.setAttribute('class', 'red');
+newSpan.textContent = toSell;
+myDiv.appendChild(newSpan);
+
+const types = inventory.map((tv) => tv.type);
+console.log('All tv types: ', types);
+
+const ul = document.getElementById('tvTypes');
+
+types.forEach(tv => {
+  let li = document.createElement('li');
+  li.textContent = tv;
+  ul.appendChild(li);
+});
+
+const allSoldTvs = inventory.filter((tv) => {
+  return (tv.originalStock - tv.sold <= 0);
+});
+console.log('sold tv\'s: ', allSoldTvs);
+
+const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
+console.log('All tv\'s with ambilight', hasAmbilight);
+
+const sortLowHigh = inventory.sort((a, b) => {
+  return a.price - b.price;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // 1. Sla het HTML element op waar we straks iets in willen plaatsen
+// const banaanLijst = document.getElementById('banaan');
+
+// // 2. Maak een nieuwe HTML node (in dit geval li element)
+// const banaanItemOne = document.createElement('li');
+
+// // 3. Zet er een attribuut "class" op met de waarde "yellow"
+// banaanItemOne.setAttribute('class', 'yellow');
+
+// // 4. Stop tekst in dit element
+// banaanItemOne.textContent = "Hallo";
+
+// // 5. Voeg dit <li>-element toe aan het bestaande <ul> element
+// banaanLijst.appendChild(banaanItemOne);
