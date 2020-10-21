@@ -164,6 +164,7 @@ const inventory = [
 
 // OPDRACHT 4B
 const makeOptions = tv => {
+  let output = 'Beschikt over ';
   const options = [];
   for (var prop in tv.options) {
     if (Object.prototype.hasOwnProperty.call(tv.options, prop)) {
@@ -172,7 +173,6 @@ const makeOptions = tv => {
       }
     }
   }
-  let output = 'Beschikt over ';
   options.forEach((option, index) => {
     if (index === options.length - 2) {
       output += option + ' en ';
