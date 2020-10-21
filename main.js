@@ -179,13 +179,6 @@ myDiv.appendChild(newSpan);
 const types = inventory.map((tv) => tv.type);
 console.log('All tv types: ', types);
 
-// const ul = document.getElementById('tv-types');
-// types.forEach(tv => {
-//   let li = document.createElement('li');
-//   li.textContent = tv;
-//   ul.appendChild(li);
-// });
-
 // OPDRACHT 2B
 const allSoldTvs = inventory.filter((tv) => {
   return (tv.originalStock - tv.sold <= 0);
@@ -197,23 +190,23 @@ const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
 console.log('All tv\'s with ambilight', hasAmbilight);
 
 // OPDRACHT 2D
-const sortLowHigh = inventory.sort((a, b) => {
-  if (a.price < b.price) {
-    return -1;
-  }
-  if (a.price > b.price) {
-    return 1;
-  }
-  // a must be equal to b
-  return 0;
-});
-console.log('sort by prize: ', sortLowHigh);
+// const sortLowHigh = inventory.sort((a, b) => {
+//   if (a.price < b.price) {
+//     return -1;
+//   }
+//   if (a.price > b.price) {
+//     return 1;
+//   }
+//   // a must be equal to b
+//   return 0;
+// });
+// console.log('sort by prize: ', sortLowHigh);
 
-// of korter:
-const sortLowHighShort = inventory.sort((a, b) => {
-  return a.price - b.price;
-});
-console.log('sort by prize (short version): ', sortLowHighShort);
+// // of korter:
+// const sortLowHighShort = inventory.sort((a, b) => {
+//   return a.price - b.price;
+// });
+// console.log('sort by prize (short version): ', sortLowHighShort);
 
 // OPDRACHT 3
 const twoTvTypes = document.getElementById('two-tv-types');
@@ -265,7 +258,30 @@ const printScreenSize = availableSizes => {
 }
 console.log(printScreenSize(inventory[0].availableSizes));
 
+// OPDRACHT 4D
 
+const tvData = document.getElementById('tv-data');
+inventory.forEach(tv => {
+  let p = document.createElement('p');
+  tvData.appendChild(p);
+
+  let span = document.createElement('span');
+  span.textContent = makeName(tv);
+  p.appendChild(span);
+
+  span = document.createElement('span');
+  span.textContent = `€${tv.price},-`;
+  p.appendChild(span);
+
+  span = document.createElement('span');
+  // li.textContent = printScreenSize(tv.availableSizes);
+  // ul.appendChild(li);
+
+  // li = document.createElement('li');
+  // li.textContent = makeOptions(tv);
+  // ul.appendChild(li);
+
+});
 
 
 

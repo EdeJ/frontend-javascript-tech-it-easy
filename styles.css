@@ -1,4 +1,8 @@
-.red{
+.red {
     font-weight: bold;
     color: red;
+}
+
+span {
+    display: block;
 }

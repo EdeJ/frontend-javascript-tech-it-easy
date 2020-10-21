@@ -165,7 +165,7 @@ const inventory = [
 // OPDRACHT 4B
 const makeOptions = tv => {
   const options = [];
-  for (var prop in tv.options) {
+  for (let prop in tv.options) {
     if (Object.prototype.hasOwnProperty.call(tv.options, prop)) {
       if (tv.options[prop]) {
         options.push(prop);
