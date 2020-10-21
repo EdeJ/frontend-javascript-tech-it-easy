@@ -196,7 +196,7 @@ console.log('sold tv\'s: ', allSoldTvs);
 const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
 console.log('All tv\'s with ambilight', hasAmbilight);
 
-OPDRACHT 2D
+// OPDRACHT 2D
 const sortLowHigh = inventory.sort((a, b) => {
   if (a.price < b.price) {
     return -1;
