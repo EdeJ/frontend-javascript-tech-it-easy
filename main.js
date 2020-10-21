@@ -196,24 +196,24 @@ console.log('sold tv\'s: ', allSoldTvs);
 const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
 console.log('All tv\'s with ambilight', hasAmbilight);
 
-// OPDRACHT 2D
-// const sortLowHigh = inventory.sort((a, b) => {
-//   if (a.price < b.price) {
-//     return -1;
-//   }
-//   if (a.price > b.price) {
-//     return 1;
-//   }
-//   // a must be equal to b
-//   return 0;
-// });
-// console.log('sort by prize: ', sortLowHigh);
+OPDRACHT 2D
+const sortLowHigh = inventory.sort((a, b) => {
+  if (a.price < b.price) {
+    return -1;
+  }
+  if (a.price > b.price) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+});
+console.log('sort by prize: ', sortLowHigh);
 
-// // of korter:
-// const sortLowHighShort = inventory.sort((a, b) => {
-//   return a.price - b.price;
-// });
-// console.log('sort by prize (short version): ', sortLowHighShort);
+// of korter:
+const sortLowHighShort = inventory.sort((a, b) => {
+  return a.price - b.price;
+});
+console.log('sort by prize (short version): ', sortLowHighShort);
 
 // OPDRACHT 3
 const twoTvTypes = document.getElementById('two-tv-types');
