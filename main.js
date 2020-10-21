@@ -197,23 +197,23 @@ const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
 console.log('All tv\'s with ambilight', hasAmbilight);
 
 // OPDRACHT 2D
-const sortLowHigh = inventory.sort((a, b) => {
-  if (a.price < b.price) {
-    return -1;
-  }
-  if (a.price > b.price) {
-    return 1;
-  }
-  // a must be equal to b
-  return 0;
-});
-console.log('sort by prize: ', sortLowHigh);
+// const sortLowHigh = inventory.sort((a, b) => {
+//   if (a.price < b.price) {
+//     return -1;
+//   }
+//   if (a.price > b.price) {
+//     return 1;
+//   }
+//   // a must be equal to b
+//   return 0;
+// });
+// console.log('sort by prize: ', sortLowHigh);
 
-// of korter:
-const sortLowHighShort = inventory.sort((a, b) => {
-  return a.price - b.price;
-});
-console.log('sort by prize (short version): ', sortLowHighShort);
+// // of korter:
+// const sortLowHighShort = inventory.sort((a, b) => {
+//   return a.price - b.price;
+// });
+// console.log('sort by prize (short version): ', sortLowHighShort);
 
 // OPDRACHT 3
 const twoTvTypes = document.getElementById('two-tv-types');
@@ -232,15 +232,15 @@ console.log(makeName(inventory[1]));
 
 // OPDRACHT 4B
 const makeOptions = tv => {
-  let output = 'Beschikt over ';
   const options = [];
-  for (var prop in tv.options) {
+  for (let prop in tv.options) {
     if (Object.prototype.hasOwnProperty.call(tv.options, prop)) {
       if (tv.options[prop]) {
         options.push(prop);
       }
     }
   }
+  let output = 'Beschikt over ';
   options.forEach((option, index) => {
     if (index === options.length - 2) {
       output += option + ' en ';
@@ -255,8 +255,15 @@ const makeOptions = tv => {
 console.log(makeOptions(inventory[3]));
 
 // OPDRACHT 4C
-
-
+const printScreenSize = availableSizes => {
+  let output = '';
+  availableSizes.forEach((size, index) => {
+    output += `${size} inches (${size * 2.54} cm)`;
+    output += index !== (availableSizes.length - 1) ? ' | ' : '';
+  })
+  return output;
+}
+console.log(printScreenSize(inventory[0].availableSizes));
 
 
 
@@ -283,3 +290,5 @@ console.log(makeOptions(inventory[3]));
 
 // // 5. Voeg dit <li>-element toe aan het bestaande <ul> element
 // banaanLijst.appendChild(banaanItemOne);
+
+
