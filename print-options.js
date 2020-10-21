@@ -162,74 +162,6 @@ const inventory = [
   },
 ];
 
-// OPDRACHT 1A
-const toSell = inventory.reduce((acc, currentValue) => {
-  return acc + (currentValue.originalStock - currentValue.sold);
-}, 0);
-console.log('tvs to sell: ', toSell);
-
-// OPDRACHT 1B
-const myDiv = document.getElementById('tvs-to-sell');
-const newSpan = document.createElement('span');
-newSpan.setAttribute('class', 'red');
-newSpan.textContent = toSell;
-myDiv.appendChild(newSpan);
-
-// OPDRACHT 2A
-const types = inventory.map((tv) => tv.type);
-console.log('All tv types: ', types);
-
-// const ul = document.getElementById('tv-types');
-// types.forEach(tv => {
-//   let li = document.createElement('li');
-//   li.textContent = tv;
-//   ul.appendChild(li);
-// });
-
-// OPDRACHT 2B
-const allSoldTvs = inventory.filter((tv) => {
-  return (tv.originalStock - tv.sold <= 0);
-});
-console.log('sold tv\'s: ', allSoldTvs);
-
-// OPDRACHT 2C
-const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
-console.log('All tv\'s with ambilight', hasAmbilight);
-
-// OPDRACHT 2D
-const sortLowHigh = inventory.sort((a, b) => {
-  if (a.price < b.price) {
-    return -1;
-  }
-  if (a.price > b.price) {
-    return 1;
-  }
-  // a must be equal to b
-  return 0;
-});
-console.log('sort by prize: ', sortLowHigh);
-
-// of korter:
-const sortLowHighShort = inventory.sort((a, b) => {
-  return a.price - b.price;
-});
-console.log('sort by prize (short version): ', sortLowHighShort);
-
-// OPDRACHT 3
-const twoTvTypes = document.getElementById('two-tv-types');
-const p1 = document.createElement('p');
-const p2 = document.createElement('p');
-p1.textContent = inventory[0].type;
-p2.textContent = inventory[1].type;
-
-twoTvTypes.appendChild(p1);
-twoTvTypes.appendChild(p2);
-
-// OPDRACHT 4A
-const makeName = tv => `${tv.brand} ${tv.type} - ${tv.name}`;
-console.log(makeName(inventory[0]));
-console.log(makeName(inventory[1]));
-
 // OPDRACHT 4B
 const makeOptions = tv => {
   let output = 'Beschikt over ';
@@ -253,33 +185,3 @@ const makeOptions = tv => {
   return output;
 }
 console.log(makeOptions(inventory[3]));
-
-// OPDRACHT 4C
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // 1. Sla het HTML element op waar we straks iets in willen plaatsen
-// const banaanLijst = document.getElementById('banaan');
-
-// // 2. Maak een nieuwe HTML node (in dit geval li element)
-// const banaanItemOne = document.createElement('li');
-
-// // 3. Zet er een attribuut "class" op met de waarde "yellow"
-// banaanItemOne.setAttribute('class', 'yellow');
-
-// // 4. Stop tekst in dit element
-// banaanItemOne.textContent = "Hallo";
-
-// // 5. Voeg dit <li>-element toe aan het bestaande <ul> element
-// banaanLijst.appendChild(banaanItemOne);
