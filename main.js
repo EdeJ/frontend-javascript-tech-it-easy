@@ -190,23 +190,23 @@ const hasAmbilight = inventory.filter(tv => tv.options.ambiLight);
 console.log('All tv\'s with ambilight', hasAmbilight);
 
 // OPDRACHT 2D
-// const sortLowHigh = inventory.sort((a, b) => {
-//   if (a.price < b.price) {
-//     return -1;
-//   }
-//   if (a.price > b.price) {
-//     return 1;
-//   }
-//   // a must be equal to b
-//   return 0;
-// });
-// console.log('sort by prize: ', sortLowHigh);
+const sortLowHigh = inventory.sort((a, b) => {
+  if (a.price < b.price) {
+    return -1;
+  }
+  if (a.price > b.price) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+});
+console.log('sort by prize: ', sortLowHigh);
 
-// // of korter:
-// const sortLowHighShort = inventory.sort((a, b) => {
-//   return a.price - b.price;
-// });
-// console.log('sort by prize (short version): ', sortLowHighShort);
+// of korter:
+const sortLowHighShort = inventory.sort((a, b) => {
+  return a.price - b.price;
+});
+console.log('sort by prize (short version): ', sortLowHighShort);
 
 // OPDRACHT 3
 const twoTvTypes = document.getElementById('two-tv-types');
@@ -224,6 +224,22 @@ console.log(makeName(inventory[0]));
 console.log(makeName(inventory[1]));
 
 // OPDRACHT 4B
+// const optionsTest = inventory[3].options;
+// const keys = Object.keys(optionsTest);
+// console.log(keys);
+
+// const myString = keys.reduce((acc, option) => {
+//   if (option) {
+//     console.log('length :', keys.length);
+//     const keys = option.keys(options);
+//   }
+
+// });
+
+// console.log('string is: ', myString);
+
+
+
 const makeOptions = tv => {
   const options = [];
   for (let prop in tv.options) {
@@ -258,31 +274,67 @@ const printScreenSize = availableSizes => {
 }
 console.log(printScreenSize(inventory[0].availableSizes));
 
-// OPDRACHT 4D
+// OPDRACHT 4D / OPDRACHT 5
+printTvData(inventory);
 
-const tvData = document.getElementById('tv-data');
-inventory.forEach(tv => {
-  let p = document.createElement('p');
-  tvData.appendChild(p);
+function printTvData(tvList) {
+  const tvData = document.getElementById('tv-data');
+  tvData.textContent = '';
+  tvList.forEach(tv => {
+    let p = document.createElement('p');
+    tvData.appendChild(p);
 
-  let span = document.createElement('span');
-  span.textContent = makeName(tv);
-  p.appendChild(span);
+    let span = document.createElement('span');
+    span.textContent = makeName(tv);
+    p.appendChild(span);
 
-  span = document.createElement('span');
-  span.textContent = `€${tv.price},-`;
-  p.appendChild(span);
+    span = document.createElement('span');
+    span.textContent = `€${tv.price},-`;
+    p.appendChild(span);
 
-  span = document.createElement('span');
-  // li.textContent = printScreenSize(tv.availableSizes);
-  // ul.appendChild(li);
+    span = document.createElement('span');
+    span.textContent = printScreenSize(tv.availableSizes);
+    p.appendChild(span);
 
-  // li = document.createElement('li');
-  // li.textContent = makeOptions(tv);
-  // ul.appendChild(li);
+    span = document.createElement('li');
+    span.textContent = makeOptions(tv);
+    p.appendChild(span);
+  });
+}
 
-});
+// OPDRACHT 6A
+const totalPrice = inventory.reduce((acc, tv) => {
+  return acc + (tv.originalStock - tv.sold) * tv.price;
+}, 0);
+console.log(`Total price: EURO ${totalPrice},-`);
+const totalOriginalStock = document.getElementById("total-original-stock-price");
+totalOriginalStock.textContent = `Totaal prijs van alle tv's op voorraad: EURO ${totalPrice},-`;
 
+//OPDRACHT 6B
+const totalPriceSold = inventory.reduce((acc, tv) => {
+  return acc + tv.sold * tv.price;
+}, 0);
+console.log(`Total price: EURO ${totalPriceSold},-`);
+const totalSold = document.getElementById("total-sold");
+totalSold.textContent = `Totaal prijs van alle verkochte tv's: EURO ${totalPriceSold},-`;
+
+// OPDRACHT 7
+const sort = (sortBy) => {
+  switch (sortBy) {
+    case 'price':
+
+      break;
+    case 'price':
+
+      break;
+    case 'sold':
+      printTvData(allSoldTvs);
+      break;
+
+    default:
+      break;
+  }
+}
 
 
 
