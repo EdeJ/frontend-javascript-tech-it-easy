@@ -187,3 +187,26 @@ const getOptions = options => {
 
 console.log("OPTIONS: " + getOptions(inventory[3].options));
 
+// OPDRACHT 4B
+const getOptions2 = options => {
+  const keys = Object.keys(options);
+
+  // maak een nieuwe array met de opties die deze tv heeft (de opties die de waarde true hebben)
+  const tvOptions = keys.filter(option => {
+    return options[option];
+  });
+
+  return tvOptions.reduce((acc, value, index) => {
+    if (index === tvOptions.length - 1) {
+      return acc + value;
+    }
+    if (index === tvOptions.length - 2) {
+      return acc + value + ' en ';
+    }
+    return acc + value + ', ';
+  }, '');
+
+}
+
+console.log("OPTIONS: " + getOptions2(inventory[3].options));
+

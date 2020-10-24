@@ -281,7 +281,7 @@ const printScreenSize = availableSizes => {
 }
 
 
-console.log(printScreenSize(inventory[0].availableSizes));
+console.log(printScreenSize(inventory[3].availableSizes));
 
 // OPDRACHT 4D / OPDRACHT 5
 printTvData(inventory);
