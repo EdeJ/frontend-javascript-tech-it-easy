@@ -224,8 +224,32 @@ console.log(makeName(inventory[0]));
 console.log(makeName(inventory[1]));
 
 // OPDRACHT 4B
+const getOptions = options => {
+  const keys = Object.keys(options);
+  let tvOptions = keys.reduce((acc, key) => {
+    return options[key] ? acc + `${key}, ` : acc;
+  }, '');
+
+
+  // haal de laatste komma van de string
+  tvOptions = tvOptions.substring(0, tvOptions.length - 2);
+
+  // haal het index nummer van de laatse komma in de string.
+  const index = tvOptions.lastIndexOf(',');
+
+  // als er meer dan 1 optie is
+  if (index > 0) {
+    // vervang laatste komma door ' en'
+    tvOptions = tvOptions.substring(0, index) + ' en' + tvOptions.substring(index + 1);
+  }
+  console.log(tvOptions);
+
+  return tvOptions;
+}
+
+
 // const optionsTest = inventory[3].options;
-// const keys = Object.keys(optionsTest);
+
 // console.log(keys);
 
 // const myString = keys.reduce((acc, option) => {
@@ -236,32 +260,32 @@ console.log(makeName(inventory[1]));
 
 // });
 
-// console.log('string is: ', myString);
+console.log("OPTIONS: " + getOptions(inventory[3].options));
 
 
 
-const makeOptions = tv => {
-  const options = [];
-  for (let prop in tv.options) {
-    if (Object.prototype.hasOwnProperty.call(tv.options, prop)) {
-      if (tv.options[prop]) {
-        options.push(prop);
-      }
-    }
-  }
-  let output = 'Beschikt over ';
-  options.forEach((option, index) => {
-    if (index === options.length - 2) {
-      output += option + ' en ';
-    } else if (index === options.length - 1) {
-      output += option;
-    } else {
-      output += option + ', ';
-    }
-  });
-  return output;
-}
-console.log(makeOptions(inventory[3]));
+// const makeOptions = tv => {
+//   const options = [];
+//   for (let prop in tv.options) {
+//     if (Object.prototype.hasOwnProperty.call(tv.options, prop)) {
+//       if (tv.options[prop]) {
+//         options.push(prop);
+//       }
+//     }
+//   }
+//   let output = 'Beschikt over ';
+//   options.forEach((option, index) => {
+//     if (index === options.length - 2) {
+//       output += option + ' en ';
+//     } else if (index === options.length - 1) {
+//       output += option;
+//     } else {
+//       output += option + ', ';
+//     }
+//   });
+//   return output;
+// }
+// console.log(makeOptions(inventory[3]));
 
 // OPDRACHT 4C
 const printScreenSize = availableSizes => {
