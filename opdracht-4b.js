@@ -170,7 +170,6 @@ const getOptions = options => {
     return options[key] ? acc + `${key}, ` : acc;
   }, '');
 
-
   // haal de laatste komma van de string
   tvOptions = tvOptions.substring(0, tvOptions.length - 2);
 

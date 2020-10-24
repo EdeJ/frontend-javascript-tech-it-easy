@@ -230,7 +230,6 @@ const getOptions = options => {
     return options[key] ? acc + `${key}, ` : acc;
   }, '');
 
-
   // haal de laatste komma van de string
   tvOptions = tvOptions.substring(0, tvOptions.length - 2);
 
@@ -246,19 +245,6 @@ const getOptions = options => {
 
   return tvOptions;
 }
-
-
-// const optionsTest = inventory[3].options;
-
-// console.log(keys);
-
-// const myString = keys.reduce((acc, option) => {
-//   if (option) {
-//     console.log('length :', keys.length);
-//     const keys = option.keys(options);
-//   }
-
-// });
 
 console.log("OPTIONS: " + getOptions(inventory[3].options));
 
@@ -289,13 +275,12 @@ console.log("OPTIONS: " + getOptions(inventory[3].options));
 
 // OPDRACHT 4C
 const printScreenSize = availableSizes => {
-  let output = '';
-  availableSizes.forEach((size, index) => {
-    output += `${size} inches (${size * 2.54} cm)`;
-    output += index !== (availableSizes.length - 1) ? ' | ' : '';
-  })
-  return output;
+  return availableSizes.reduce((acc, size, index) => {
+    return acc + `${size} inches (${size * 2.54} cm)` + (index !== availableSizes.length - 1 ? ' | ' : '');
+  }, '');
 }
+
+
 console.log(printScreenSize(inventory[0].availableSizes));
 
 // OPDRACHT 4D / OPDRACHT 5
@@ -321,7 +306,7 @@ function printTvData(tvList) {
     p.appendChild(span);
 
     span = document.createElement('li');
-    span.textContent = makeOptions(tv);
+    span.textContent = 'Beschikt over ' + getOptions(tv.options);
     p.appendChild(span);
   });
 }
@@ -359,7 +344,6 @@ const sort = (sortBy) => {
       break;
   }
 }
-
 
 
 
